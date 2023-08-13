@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acounts</title>
+    <link rel="stylesheet" href="../css/acounts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="account-page container">
+        <div class="form-container">
+            <div class="form-btn">
+                <span onclick="loginTapControl()">Login</span>
+                <span onclick="registerTapControl()">Register</span>
+                <hr id="Indicator">
+            </div>
+            <form id="LoginForm">
+                <input type="email" name="LoginEmail" id="loginEmail" placeholder="Enter Email">
+                <input type="password" name="LoginPassword" id="loginPassword" placeholder="Enter Password">
+
+                <button type="button" class="acount-btn" onclick="Login()">Login</button>
+            </form>
+
+            <form id="RegForm">
+                <input type="text" name="userName" id="userName" placeholder="Username">
+                <input type="email" name="regEmail" id="regEmail" placeholder="Email">
+                <input type="password" name="regPassword" id="regPassword" placeholder="Password">
+                <input type="text" name="number" id="number" placeholder="Phone Number">
+                <select class="form-select" id="userType">
+                    <option selected disabled>Acount Type</option>
+                    <option value="Vendor ">Vendor </option>
+                    <option value="Customer">customer</option>
+                </select>
+                <label> Enter You Image
+                    <input type="file" name="userImage" id="userImage" placeholder="chose your image">
+                </label>
+                <button type="button" class="acount-btn" onclick="register()">Register</button>
+            </form>
+
+            <div class="spinner-circle" role="status" id="spinner">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script type="module" src="../js/Acounts.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>

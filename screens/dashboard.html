@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+
+
+    <!-- header design -->
+    <header>
+        <nav class="navbar navbar-expand-lg navigation-wrap">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="../images/logo.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <img src="images/menu.png" class="navbar-toggler" width="50px" alt="">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                        </li>
+                        <li>
+                            <button class="main-btn" onclick="logOutAcount()">LogOut Acount</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown" id="dropdown">
+                    <div id="image-user">
+                        <!-- <img src="/images/review/review-1.jpg" onclick="myDropdown()" class="dropProfile " /> -->
+                    </div>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="../screens/vendor.html">Profile</a>
+                        <a href="../screens/dashboard.html">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End of header design -->
+
+
+    <!-- Vendor card  start-->
+
+    <div class="text-center">
+        <h1>
+            Dashboard Vendor
+        </h1>
+
+        <div class="dish-card-container" id="vendor-card-containetr">
+            <!-- <div class="card-vendor-dishe">
+                <img src="../images/img/img-3.jpg" class="img-vendor-dishe">
+                <div class="pt-3 card-content">
+                    <h4>Rainbow vegetable sandwich</h4>
+                    <p>Time: 15 - 20 Minutes | Serves: 1</p>
+                    <p>Rs: 200</p>
+                    <button class="mt-4 main-btn">Delete</button>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+    <table class="table ">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Food Image</th>
+                <th scope="col">Food Name</th>
+                <th scope="col">Food Price</th>
+                <th scope="col">user Name</th>
+                <th scope="col">user Number</th>
+                <th scope="col">order type</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr id="tableRow">
+                <!-- <td><img src="" style="width: 85px; height: 45px;"/></td>
+                <td>food name</td>
+                <td>Price</td>
+                <td>user name</td>
+                <td>user number</td>
+                <td>
+                    <button class="btn btn-success btn-sm"> Accept Order</button>
+                </td> -->
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="btn-add-dish-container">
+        <button type="button" class="btn btn-addItems mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap">Add Dishes</button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Dishe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="col-form-label">Dishe Name</label>
+                            <input type="text" class="form-control" id="DisheName">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="col-form-label">Dishe Price</label>
+                            <input type="number" class="form-control" id="DishePrice">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="col-form-label">Dishe Description</label>
+                            <textarea class="form-control" id="DisheDescription" maxlength="50"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="DishImage"> Enter Dishe Image
+                                <input type="file" name="userImage" id="ImageDishe" placeholder="chose your image"
+                                    class="Image-dish">
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-create-dish" onclick="addItems()">Create
+                        Dishe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor dashboard  end-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../js/NavbarControl.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+
+</body>
+
+</html>
