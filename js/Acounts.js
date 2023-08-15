@@ -9,32 +9,38 @@ const spinner = document.getElementById("spinner")
 // login form handler 
 
 window.Login = function Login() {
+    spinner.setAttribute("class", "spinner-dis-inline-block");
     const LoginEmail = LoginForm.LoginEmail.value
     const LoginPassword = LoginForm.LoginPassword.value
     console.log('email===>', LoginEmail, 'password=======>', LoginPassword);
 
     if (!LoginEmail || !LoginPassword) {
         swal("Oops", "please fill out this fields !", "error");
+        spinner.setAttribute("class", "spinner-dis-none");
+
         return false
     }
 
     signInWithEmailAndPassword(auth, LoginEmail, LoginPassword)
         .then(async (userCredential) => {
+            spinner.setAttribute("class", "spinner-dis-inline-block");
             const user = userCredential.user;
-
             swal("Signed in ", "You are successfully logged in", "success")
             const userRef = doc(db, "users", user.uid)
             const docSnap = await getDoc(userRef);
             const userData = docSnap.data();
 
             if (!docSnap.exists()) {
-                swal("Oops", "No such document!", "error")
+                swal("Oops", "No such document!", "error");
+                spinner.setAttribute("class", "spinner-dis-none");
+
                 return false
             }
 
             console.log("Document data:", docSnap.data());
             if (userData.AcountActivate === false) {
-                swal("Oops", "your Acount is not Activate please waiting ", "warning")
+                swal("Oops", "your Acount is not Activate please waiting", "warning");
+                spinner.setAttribute("class", "spinner-dis-none");
                 return false
             }
 
@@ -52,7 +58,8 @@ window.Login = function Login() {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            swal("Oops", errorMessage, "error")
+            swal("Oops", errorMessage, "error");
+            spinner.setAttribute("class", "spinner-dis-none");
 
         });
 
@@ -62,6 +69,7 @@ window.Login = function Login() {
 // register form handler
 
 const register = async () => {
+    spinner.setAttribute("class", "spinner-dis-inline-block");
     const userName = document.getElementById('userName').value;
     const regEmail = document.getElementById('regEmail').value;
     const regPassword = document.getElementById('regPassword').value;
@@ -72,11 +80,12 @@ const register = async () => {
     // console.log(userName, regEmail, regPassword, number, 'user type ====>', userType, userImage);
     if (!userName || !regEmail || !regPassword || !number || userType === 'Acount Type' || userImage.length == 0) {
         swal("Oops", "please fill out this fields !", "error");
+        spinner.setAttribute("class", "spinner-dis-none");
+
         return false
     }
     createUserWithEmailAndPassword(auth, regEmail, regPassword)
         .then(async (user) => {
-            spinner.setAttribute("class", "spinner-dis-inline-block");
             console.log('user signUp successfully', user.user);
             const Image = await uploadImageToFirebase(
                 userImage[0]
@@ -92,7 +101,7 @@ const register = async () => {
                     uid: user.user.uid
                 }
                 setDoc(doc(db, "users", user.user.uid), obj).then(() => {
-                    swal("welcome ", "To Foodies Web", "success");
+                    swal("welcome ", "To Bag Food", "success");
                     setTimeout(() => {
                         loginTapControl();
 
@@ -126,6 +135,7 @@ const register = async () => {
 
         })
         .catch((error) => {
+            spinner.setAttribute("class", "spinner-dis-none");
             const errorMessage = error.message;
             swal("Oops", errorMessage, "error")
 
@@ -136,6 +146,11 @@ const register = async () => {
 }
 
 window.register = register
+
+
+
+// user image file upload  
+
 
 const uploadImageToFirebase = async (file) => {
     let collectionImage;

@@ -2,7 +2,7 @@ import { FoodDisheRef, addDoc, auth, collection, db, doc, deleteDoc, getDoc, get
 
 
 const image_user = document.getElementById('image-user');
-
+const spinner = document.getElementById("spinner")
 const vendor_card_containetr = document.getElementById('vendor-card-containetr');
 const tableRow = document.getElementById('tableRow')
 
@@ -36,6 +36,9 @@ window.addEventListener("load", (event) => {
     });
 
 });
+
+
+// order get 
 
 
 
@@ -80,6 +83,7 @@ window.deleteorder = deleteorder
 
 
 const addItems = async () => {
+    spinner.setAttribute("class", "spinner-dis-inline-block");
     const DisheName = document.getElementById('DisheName').value;
     const DishePrice = document.getElementById('DishePrice').value;
     const DisheDescription = document.getElementById('DisheDescription').value;
@@ -88,11 +92,12 @@ const addItems = async () => {
     // console.log(ImageDishe);
     if (!DisheName || !DishePrice || !DisheDescription || !ImageDishe) {
         swal("Oops", "please fill out this fields !", "error");
+        spinner.setAttribute("class", "spinner-dis-none");
         return
     }
 
     try {
-        // console.log('uid for vendor==============>',)
+        spinner.setAttribute("class", "spinner-dis-inline-block");
         const ImageDisheItem = await uploadItemsImageToFirebase(
             ImageDishe[0]
         );
@@ -107,7 +112,7 @@ const addItems = async () => {
         // console.log('object is working=====>', addDocumentInFirebase);
         if (addDocumentInFirebase) {
             swal("success", "Your successfully dishe add", "success")
-
+            spinner.setAttribute("class", "spinner-dis-none");
             return
         }
         else {
@@ -117,6 +122,8 @@ const addItems = async () => {
 
     } catch (error) {
         swal("Oops", error, "error");
+        spinner.setAttribute("class", "spinner-dis-none");
+
     }
 }
 window.addItems = addItems
@@ -173,7 +180,7 @@ const getDishe = async () => {
 
 window.getDishe = getDishe
 
-// logout 
+// delete food item 
 
 const deleteDish = async (id) => {
     await deleteDoc(doc(db, "dishes", id));

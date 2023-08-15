@@ -1,5 +1,5 @@
 .btn-addItems {
-    background: #bc7203 !important;
+    background: #ea393d !important;
     color: #fff !important;
     font-weight: 700 !important;
 }
@@ -19,7 +19,7 @@ input::-webkit-inner-spin-button {
 /* DishImage */
 .DishImage {
     padding: 10px;
-    background: #fea116;
+    background: #ea393d;
     display: table;
     color: #fff;
     text-align: center;
@@ -78,4 +78,3 @@ input::-webkit-inner-spin-button {
 .card-content {
     width: 340px !important;
 }
-

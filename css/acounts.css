@@ -5,30 +5,6 @@
     margin-top: 100px;
 }
 
-.spinner-circle {
-    display: none;
-}
-
-.spinner-dis-inline-block {
-    display: inline-block !important;
-    width: 50px;
-    color: #000000 !important;
-    position: fixed;
-    top: 50%;
-    height: 50px;
-    left: 50%;
-    vertical-align: -0.125em;
-    background-color: currentColor;
-    border-radius: 50%;
-    opacity: 0;
-    -webkit-animation: .75s linear infinite spinner-grow;
-    animation: .75s linear infinite spinner-grow;
-}
-
-.spinner-dis-none {
-    display: none !important;
-}
-
 .form-container {
     background: white;
     width: 300px;
@@ -128,7 +104,7 @@ form a {
 
 .acount-btn {
     display: inline-block;
-    background: #fea116;
+    background: #ea393d;
     color: white;
     padding: 8px 30px;
     margin: 30px 0;

@@ -1,7 +1,9 @@
 import { addDoc, auth, collection, db, doc, getDoc, getDocs, onAuthStateChanged, orderRef, query, where } from "../config/Firebase.js";
 
 const dropdown_container = document.getElementById('dropdown');
-const foodItems_card_container = document.getElementById('foodItems-card')
+const foodItems_card_container = document.getElementById('foodItems-card');
+const spinner = document.getElementById("spinner")
+
 
 window.onload = function () {
 
@@ -92,6 +94,7 @@ window.getDishe
 // order 
 
 const hendleOrder = async (id) => {
+    spinner.setAttribute("class", "spinner-dis-inline-block");
     const uid = auth.currentUser.uid;
     console.log('uid current user ======>', uid);
     const disheRef = doc(db, "dishes", id);
@@ -101,6 +104,7 @@ const hendleOrder = async (id) => {
     const userSnap = await getDoc(userRef);
 
     if (disheSnap.exists() || userSnap.exists()) {
+        spinner.setAttribute("class", "spinner-dis-inline-block");
         console.log("dishe data  ==================>", disheSnap.data());
         console.log("user data==================>", userSnap.data());
         const disheData = disheSnap.data();
@@ -120,9 +124,10 @@ const hendleOrder = async (id) => {
         console.log('obj ==========>', obj);
         await addDoc(orderRef, obj)
         swal("your order placed successfully ", "Your order has been successfully submitted", "success")
-
+        spinner.setAttribute("class", "spinner-dis-none");
 
     } else {
+        spinner.setAttribute("class", "spinner-dis-none");
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
     }

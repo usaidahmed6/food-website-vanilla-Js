@@ -1,0 +1,24 @@
+
+.spinner-circle {
+    display: none;
+}
+
+.spinner-dis-inline-block {
+    display: inline-block;
+    width: 50px;
+    color: #e6212a !important;
+    position: fixed;
+    top: 50%;
+    height: 50px;
+    left: 50%;
+    vertical-align: -0.125em;
+    background-color: currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-animation: .75s linear infinite spinner-grow;
+    animation: .75s linear infinite spinner-grow;
+}
+
+.spinner-dis-none {
+    display: none !important;
+}
