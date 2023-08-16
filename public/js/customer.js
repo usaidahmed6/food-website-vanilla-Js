@@ -23,7 +23,7 @@ window.addEventListener("load", (event) => {
         const userDate = docSnap.data();
         const userProfileDetail = `
         <img src=${userDate.userImage}
-        alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+        alt="Avatar" class="img-fluid my-5" />
         <h5 style="color: #fff;">${userDate.userName}</h5>
         <i class="far fa-edit mb-5"></i>
         `
